@@ -13,12 +13,12 @@ void setup() {
 int cur = 0;
 
 void loop() {
-    int pin = (cur % 4) + 2;
+    int pin = cur + 2;
 
     for(int i = 2; i <= 5; i++) {
         dw(i, i == pin ? HIGH : LOW);
     }
 
-    delay(200);
-    cur++;
+    delay(600);
+    cur = (cur + 1) % 4;
 }
