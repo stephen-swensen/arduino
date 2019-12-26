@@ -1,24 +1,21 @@
 
-void dw(int x,int y) {
-   digitalWrite(x,y); 
-}
+//const int DELAY
+const int PINS_SIZE = 4;
+int pins[PINS_SIZE] = { 2, 3, 4, 5 };
 
 void setup() {
-    pinMode(2,OUTPUT);
-    pinMode(3,OUTPUT);
-    pinMode(4,OUTPUT);
-    pinMode(5,OUTPUT);
+    for(int i = 0; i < PINS_SIZE; i++) {
+        pinMode(pins[i], OUTPUT);
+    }
 }
 
 int cur = 0;
 
 void loop() {
-    int pin = cur + 2;
-
-    for(int i = 2; i <= 5; i++) {
-        dw(i, i == pin ? HIGH : LOW);
+    for(int i = 0; i < PINS_SIZE; i++) {
+        digitalWrite(pins[i], i == cur ? HIGH : LOW);
     }
 
-    delay(600);
+    delay(100);
     cur = (cur + 1) % 4;
 }
